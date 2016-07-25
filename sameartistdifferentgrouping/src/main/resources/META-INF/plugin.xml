@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This files contains a list of plugins to be instantiated by beaTunes.        -->
+<!-- See https://www.beatunes.com/en/beatunes-plugin-descriptor.html for details. -->
+<plugins>
+    <name>"Same artist, different grouping"-Inspection</name>
+    <id>sameartistdifferentgrouping</id>
+    <version>${pom.version}</version>
+    <description>Inspection that finds songs with the same artist, but a different grouping.</description>
+    <license>
+        <name>GNU Lesser General Public License 2.1</name>
+        <url>http://www.gnu.org/licenses/lgpl.txt</url>
+    </license>
+    <change-notes>1.0.0:
+Initial version.
+    </change-notes>
+    <vendor>
+        <name>tagtraum industries incorporated</name>
+        <url>http://www.tagtraum.com/</url>
+        <email>support@tagtraum.com</email>
+        <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
+    </vendor>
+    <beatunes-version>
+        <min>4.6.0</min>
+        <max>4.9.9</max>
+    </beatunes-version>
+    
+    <!-- Analysis Tasks -->
+    <plugin class="com.beatunes.inspection.SameArtistDifferentGroupingInspector"/>
+</plugins>
