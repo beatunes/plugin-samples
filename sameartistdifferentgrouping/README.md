@@ -8,6 +8,7 @@ It will not work with earlier versions.
 If you'd like to understand the code, start with studying the class
 `SameArtistDifferentGroupingInspector` in `src/main/java/...`.
 
+**Warning:** The inspection API will change in beaTunes 5.
 
 ## Installation
 
