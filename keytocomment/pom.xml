@@ -99,6 +99,16 @@
             </extension>
         </extensions>
     </build>
+    <scm>
+        <connection>scm:git:git://github.com/beatunes/plugin-samples.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/beatunes/plugin-samples.git</developerConnection>
+        <url>https://github.com/beatunes/plugin-samples/tree/master/keytocomment</url>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/beatunes/plugin-samples/issues</url>
+    </issueManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

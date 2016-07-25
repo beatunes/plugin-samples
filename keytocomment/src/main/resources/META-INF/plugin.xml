@@ -11,6 +11,7 @@
     </license>
     <change-notes>3.0.3:
 - Update for beaTunes 4.6.
+- Migrated source to GitHub.
 
 3.0.2:
 - Fixed replace key logic.
