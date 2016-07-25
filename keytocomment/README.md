@@ -11,11 +11,11 @@ It is purely meant as a demo plugin, as its functionality is already built into 
 
 ## Installation
 
-To install, place the jar (`keytocomment-3.0.2.jar`) into beaTunes'
+To install, place the jar (`keytocomment-x.y.z.jar`) into beaTunes'
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
 - Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
-- OS X: ``~/Library/Application Support/beaTunes/Plug-Ins`
+- OS X: `~/Library/Application Support/beaTunes/Plug-Ins`
 
 
 ## Building
