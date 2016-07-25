@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This files contains a list of plugins to be instantiated by beaTunes.        -->
+<!-- See https://www.beatunes.com/en/beatunes-plugin-descriptor.html for details. -->
+<plugins>
+    <name>Copy key to grouping</name>
+    <id>keytogrouping</id>
+    <version>${pom.version}</version>
+    <description>Analysis task that copies the key value to the grouping field.</description>
+    <license>
+        <name>GNU Lesser General Public License 2.1</name>
+        <url>http://www.gnu.org/licenses/lgpl.txt</url>
+    </license>
+    <change-notes>3.1.1:
+- Update for beaTunes 4.6
+- Imported sources to GitHub
+
+3.1.0:
+Update for beaTunes 4.0.4 (custom key renderer support).
+
+3.0.0:
+Update for beaTunes 4.
+
+2.0.0:
+Changes for beaTunes 3:
+- Removed empty editor, as it is now taken care of by beaTunes.
+- Removed explicit persisting of song data, as it is now done implicitly.
+- Removed UI update code, as it is now automatic.
+
+1.0.5:
+Minor internal updates. Preparation for beaTunes 3.
+
+1.0.4:
+Update for beaTunes 2.1.4
+
+1.0.3:
+Update for beaTunes 2.1
+
+1.0.2:
+Adapted to latest API changes.
+Modified pom for easier compilation.
+    </change-notes>
+    <vendor>
+        <name>tagtraum industries incorporated</name>
+        <url>http://www.tagtraum.com/</url>
+        <email>support@tagtraum.com</email>
+        <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
+    </vendor>
+    <beatunes-version>
+        <min>4.6.0</min>
+        <max>4.9.9</max>
+    </beatunes-version>
+    
+    <!-- Analysis Tasks -->
+    <plugin class="com.beatunes.keytogrouping.KeyToGrouping"/>
+</plugins>
