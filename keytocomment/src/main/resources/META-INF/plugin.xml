@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Contains a list of plugins to be instantiated by beaTunes -->
+<!-- This file contains a list of plugins to be instantiated by beaTunes -->
 <plugins>
     <name>Copy key to comment</name>
     <id>keytocomment</id>
@@ -9,7 +9,10 @@
         <name>GNU Lesser General Public License 2.1</name>
         <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
-    <change-notes>3.0.2:
+    <change-notes>3.0.3:
+- Update for beaTunes 4.6.
+
+3.0.2:
 - Fixed replace key logic.
 
 3.0.1:
@@ -42,11 +45,11 @@ First release.
     <vendor>
         <name>tagtraum industries incorporated</name>
         <url>http://www.tagtraum.com/</url>
-        <email>support@beatunes.com</email>
+        <email>support@tagtraum.com</email>
         <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
     </vendor>
     <beatunes-version>
-        <min>4.0.4</min>
+        <min>4.6.0</min>
         <max>4.9.9</max>
     </beatunes-version>
     
