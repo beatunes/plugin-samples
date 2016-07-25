@@ -12,8 +12,6 @@ import com.tagtraum.beatunes.analysis.TaskEditor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.prefs.Preferences;
 
 /**
@@ -79,13 +77,10 @@ public class KeyToCommentEditor implements TaskEditor<KeyToComment> {
                 break;
             }
         }
-        this.component.addPropertyChangeListener("enabled", new PropertyChangeListener() {
-            @Override
-            public void propertyChange(final PropertyChangeEvent evt) {
-                final Boolean enabled = (Boolean) evt.getNewValue();
-                keyTextRendererComboBox.setEnabled(enabled);
-                keyFormatLabel.setEnabled(enabled);
-            }
+        this.component.addPropertyChangeListener("enabled", evt -> {
+            final Boolean enabled = (Boolean) evt.getNewValue();
+            keyTextRendererComboBox.setEnabled(enabled);
+            keyFormatLabel.setEnabled(enabled);
         });
     }
 
