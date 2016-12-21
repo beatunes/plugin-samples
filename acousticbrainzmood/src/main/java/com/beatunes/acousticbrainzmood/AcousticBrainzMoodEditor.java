@@ -44,8 +44,8 @@ public class AcousticBrainzMoodEditor implements TaskEditor<AcousticBrainzMood> 
 
         this.component = new JPanel();
         this.component.setLayout(new BoxLayout(this.component, BoxLayout.Y_AXIS));
-        this.component.add(this.embedMoodTagsCheckBox);
         this.component.add(this.replaceExistingValuesCheckBox);
+        this.component.add(this.embedMoodTagsCheckBox);
         this.component.setOpaque(false);
 
         this.component.addPropertyChangeListener("enabled", evt -> {
