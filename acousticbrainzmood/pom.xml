@@ -52,7 +52,7 @@
                     <artifactId>mac_widgets</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.jaudiotagger</groupId>
+                    <groupId>net.jthink</groupId>
                     <artifactId>jaudiotagger</artifactId>
                 </exclusion>
                 <exclusion>
