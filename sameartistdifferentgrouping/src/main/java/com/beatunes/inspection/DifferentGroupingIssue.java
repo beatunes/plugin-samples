@@ -10,7 +10,7 @@ import com.tagtraum.audiokern.AudioSong;
 import com.tagtraum.beatunes.inspection.Inspector;
 import com.tagtraum.beatunes.inspection.Issue;
 import com.tagtraum.beatunes.inspection.Solution;
-import com.tagtraum.beatunes.library.ITunesMusicLibrary;
+import com.tagtraum.beatunes.library.MediaLibrary;
 
 import java.text.MessageFormat;
 import java.util.*;
@@ -58,7 +58,7 @@ public class DifferentGroupingIssue implements Issue {
         final Map<String, Integer> songsPerGrouping = new HashMap<>();
         String mostUsedGrouping = null;
         int mostUsedCount = 0;
-        for (final AudioSong song : getSongs()) {
+        for (final AudioSong song : (Collection<AudioSong>)getSongs()) {
             final String grouping = song.getGrouping();
             if (grouping != null && grouping.length() > 0) {
                 Integer integer = songsPerGrouping.get(grouping);
@@ -95,9 +95,9 @@ public class DifferentGroupingIssue implements Issue {
     @Override
     public Collection<Long> getSongIds() {
         final Set<Long> ids = new HashSet<>();
-        final ITunesMusicLibrary library = inspector.getApplication().getiTunesMusicLibrary();
-        ids.addAll(library.getSongIdsWithPropertyValue("artist", artist));
-        ids.addAll(library.getSongIdsWithPropertyValue("albumArtist", artist));
+        final MediaLibrary library = inspector.getApplication().getMediaLibrary();
+        ids.addAll(library.getSongIdsWithProperties(Collections.singletonMap("artist", artist)));
+        ids.addAll(library.getSongIdsWithProperties(Collections.singletonMap("albumArtist", artist)));
         return ids;
     }
 

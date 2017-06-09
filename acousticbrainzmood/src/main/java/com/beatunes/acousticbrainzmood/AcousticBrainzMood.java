@@ -9,7 +9,7 @@ package com.beatunes.acousticbrainzmood;
 import com.tagtraum.audiokern.AudioId;
 import com.tagtraum.audiokern.AudioSong;
 import com.tagtraum.audiokern.mood.Mood;
-import com.tagtraum.beatunes.AbstractSongTableModel;
+import com.tagtraum.beatunes.action.standard.EmbedSpecialFieldsAction;
 import com.tagtraum.beatunes.analysis.AnalysisException;
 import com.tagtraum.beatunes.analysis.SongAnalysisTask;
 import com.tagtraum.beatunes.analysis.Task;
@@ -106,7 +106,7 @@ public class AcousticBrainzMood extends SongAnalysisTask {
                 song.setMoodAlgorithm(song.getMoodAlgorithm());
                 // !!! the toMoodKeywords()-method will move somewhere else in beaTunes5
                 if (isEmbedMoodTags()) {
-                    song.setMoodKeywords(new HashSet<>(AbstractSongTableModel.toMoodKeywords(getApplication(), song.getMood())));
+                    song.setMoodKeywords(new HashSet<>(EmbedSpecialFieldsAction.toMoodKeywords(getApplication(), song.getMood())));
                 }
             } else {
                 if (LOG.isDebugEnabled()) LOG.debug("Lookup failed for " + song);

@@ -8,8 +8,7 @@ package com.beatunes.inspection;
 
 import com.tagtraum.audiokern.AudioSong;
 import com.tagtraum.beatunes.BeaTunes;
-import com.tagtraum.beatunes.inspection.AsynchronousSolution;
-import com.tagtraum.beatunes.inspection.Issue;
+import com.tagtraum.beatunes.inspection.CallableSolution;
 import com.tagtraum.beatunes.inspection.Solution;
 import com.tagtraum.beatunes.library.LibraryDescriptor;
 import com.tagtraum.beatunes.library.Song;
@@ -32,18 +31,18 @@ import java.util.concurrent.TimeUnit;
  *
  * @author <a href="mailto:hs@tagtraum.com">Hendrik Schreiber</a>
  */
-public class DifferentGroupingSolution implements Solution {
+public class DifferentGroupingSolution implements Solution<DifferentGroupingIssue> {
 
     private static final Logger LOG = LoggerFactory.getLogger(DifferentGroupingSolution.class);
     private SameArtistDifferentGroupingInspector inspector;
     private final String id = getClass().getName() + "#" + SameArtistDifferentGroupingInspector.id++;
     private String grouping;
-    private Issue issue;
+    private DifferentGroupingIssue issue;
 
     /**
      * @param issue issue
      */
-    protected DifferentGroupingSolution(final Issue issue) {
+    protected DifferentGroupingSolution(final DifferentGroupingIssue issue) {
         this.inspector = (SameArtistDifferentGroupingInspector)issue.getInspector();
         this.issue = issue;
     }
@@ -52,7 +51,7 @@ public class DifferentGroupingSolution implements Solution {
      * @param grouping grouping to set to all the songs to
      * @param issue    issue
      */
-    public DifferentGroupingSolution(final Issue issue, final String grouping) {
+    public DifferentGroupingSolution(final DifferentGroupingIssue issue, final String grouping) {
         this.inspector = (SameArtistDifferentGroupingInspector)issue.getInspector();
         this.grouping = grouping;
         this.issue = issue;
@@ -75,7 +74,7 @@ public class DifferentGroupingSolution implements Solution {
     }
 
     @Override
-    public Issue getIssue() {
+    public DifferentGroupingIssue getIssue() {
         return issue;
     }
 
@@ -91,67 +90,63 @@ public class DifferentGroupingSolution implements Solution {
      * <b>NOTE: The API for this will change significantly in beaTunes 5!</b>
      */
     @Override
-    public boolean solveIssue(final Collection<AudioSong> songs, final boolean allowUserInteraction) {
+    public CallableSolution createCallable(final Collection<AudioSong> songs, final boolean allowUserInteraction) {
         if (LOG.isInfoEnabled()) LOG.info("Changing grouping to: " + grouping);
         final String grouping = getGrouping();
         // compute list before changing things...
         final List<Long> songList = createSongList(songs);
-        if (!songList.isEmpty()) {
-            final AsynchronousSolution asynchronousSolution = new AsynchronousSolution(
-                    this, "Change grouping to '" + grouping + "'",
-                    "Changing grouping to '" + grouping + "'",
-                    songList.size() * 2) {
+        final CallableSolution callableSolution = new CallableSolution(
+                this, "Change grouping to '" + grouping + "'",
+                "Changing grouping to '" + grouping + "'") {
 
-                @Override
-                public Void call() throws Exception {
-                    final LibraryDescriptor descriptor = inspector.getApplication().getiTunesMusicLibrary().getLibraryDescriptor();
-                    if (descriptor instanceof ITunesLibraryDescriptor) {
-                        for (final Long id : getSongIds()) {
-                            final AudioSong song = inspector.getApplication().getiTunesMusicLibrary().getSong(id);
-                            if (song != null) {
-                                song.getImplementation(Song.class).setGrouping(grouping);
-                                inspector.getApplication().getiTunesMusicLibrary().store(song, "grouping");
-                            }
+            @Override
+            public Void call() throws Exception {
+                final LibraryDescriptor descriptor = inspector.getApplication().getMediaLibrary().getLibraryDescriptor();
+                if (descriptor instanceof ITunesLibraryDescriptor) {
+                    for (final Long id : getSongIds()) {
+                        final AudioSong song = inspector.getApplication().getMediaLibrary().getSong(id);
+                        if (song != null) {
+                            song.getImplementation(Song.class).setGrouping(grouping);
+                            inspector.getApplication().getMediaLibrary().store(song, "grouping");
                         }
-                        try {
-                            TunesUtilities.invokeAndWait(() -> {
-                                final Session session = JaplScript.startSession();
-                                try {
-                                    // persist changes
-                                    final List<Track> tracks = getTracks(inspector.getApplication(), getSongIds());
-                                    session.setIgnoreReturnValues(true);
-                                    for (int i = 0; i < tracks.size(); i++) {
-                                        final Track track = tracks.get(i);
-                                        track.setGrouping(grouping);
-                                        fireProgress(1f / 2f + i / (float) getSteps());
-                                    }
-                                    return null;
-                                } finally {
-                                    session.commit();
-                                }
-                            }, 5, TimeUnit.MINUTES);
-                        } catch (ExecutionException e) {
-                            if (e.getCause() instanceof Exception) throw (Exception) e.getCause();
-                            if (e.getCause() instanceof Error) throw (Error) e.getCause();
-                        }
-                        fireProgress(1f);
-                    } else {
-                        for (int i = 0; i < getSongIds().size(); i++) {
-                            final AudioSong song = inspector.getApplication().getiTunesMusicLibrary().getSong(getSongIds().get(i));
-                            if (song != null) {
-                                song.setGrouping(grouping);
-                                fireProgress(i / (float) getSongIds().size());
-                            }
-                        }
-                        fireProgress(1f);
                     }
-                    return null;
+                    try {
+                        TunesUtilities.invokeAndWait(() -> {
+                            final Session session = JaplScript.startSession();
+                            try {
+                                // persist changes
+                                final List<Track> tracks = getTracks(inspector.getApplication(), getSongIds());
+                                session.setIgnoreReturnValues(true);
+                                for (int i = 0; i < tracks.size(); i++) {
+                                    final Track track = tracks.get(i);
+                                    track.setGrouping(grouping);
+                                    fireProgress(1f / 2f + i / (float) getSteps());
+                                }
+                                return null;
+                            } finally {
+                                session.commit();
+                            }
+                        }, 5, TimeUnit.MINUTES);
+                    } catch (ExecutionException e) {
+                        if (e.getCause() instanceof Exception) throw (Exception) e.getCause();
+                        if (e.getCause() instanceof Error) throw (Error) e.getCause();
+                    }
+                    fireProgress(1f);
+                } else {
+                    for (int i = 0; i < getSongIds().size(); i++) {
+                        final AudioSong song = inspector.getApplication().getMediaLibrary().getSong(getSongIds().get(i));
+                        if (song != null) {
+                            song.setGrouping(grouping);
+                            fireProgress(i / (float) getSongIds().size());
+                        }
+                    }
+                    fireProgress(1f);
                 }
-            };
-            asynchronousSolution.setSongIds(songList);
-            return inspector.getInspection().submitAsynchronousSolution(asynchronousSolution);
-        }
-        return true;
+                return null;
+            }
+        };
+        callableSolution.setSongIds(songList);
+        return callableSolution;
     }
 
     private List<Long> createSongList(final Collection<AudioSong> songs) {

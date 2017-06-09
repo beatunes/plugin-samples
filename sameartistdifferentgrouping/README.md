@@ -2,13 +2,11 @@
 
 ## beaTunes inspection that finds songs with the same artist, but a different grouping
 
-This plugin requires [beaTunes](http://www.beatunes.com/) 4.6 or later.
+This plugin requires [beaTunes](http://www.beatunes.com/) 5.0.0 or later.
 It will not work with earlier versions.
 
 If you'd like to understand the code, start with studying the class
 `SameArtistDifferentGroupingInspector` in `src/main/java/...`.
-
-**Warning:** The inspection API will change in beaTunes 5.
 
 ## Installation
 
@@ -16,7 +14,7 @@ To install, place the jar (`sameartistdifferentgrouping-x.y.z.jar`) into beaTune
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
 - Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
-- OS X: `~/Library/Application Support/beaTunes/Plug-Ins`
+- macOS: `~/Library/Application Support/beaTunes/Plug-Ins`
 
 
 ## Building

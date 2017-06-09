@@ -9,7 +9,10 @@
         <name>GNU Lesser General Public License 2.1</name>
         <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
-    <change-notes>3.0.3:
+    <change-notes>3.0.4:
+- Update for beaTunes 5.
+
+3.0.3:
 - Update for beaTunes 4.6.
 - Migrated source to GitHub.
 
@@ -36,7 +39,7 @@ Minor internal updates. Preparation for beaTunes 3.
 
 1.0.4:
 Update for beaTunes 2.1.4.
-        
+
 1.0.3:
 Update for beaTunes 2.1.
 
@@ -50,10 +53,10 @@ First release.
         <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
     </vendor>
     <beatunes-version>
-        <min>4.6.0</min>
-        <max>4.9.9</max>
+        <min>5.0.0</min>
+        <max>5.9.9</max>
     </beatunes-version>
-    
+
     <!-- Analysis Tasks -->
     <plugin class="com.beatunes.keytocomment.KeyToComment"/>
 </plugins>

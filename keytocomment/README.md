@@ -2,7 +2,7 @@
 
 ## beaTunes plugin to copy Key to Comment
 
-This plugin requires [beaTunes](http://www.beatunes.com/) 4.6 or later.
+This plugin requires [beaTunes](http://www.beatunes.com/) 5.0.0 or later.
 It will not work with earlier versions.
 
 It is purely meant as a demo plugin, as its functionality is already built into beaTunes
@@ -15,7 +15,7 @@ To install, place the jar (`keytocomment-x.y.z.jar`) into beaTunes'
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
 - Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
-- OS X: `~/Library/Application Support/beaTunes/Plug-Ins`
+- macOS: `~/Library/Application Support/beaTunes/Plug-Ins`
 
 
 ## Building

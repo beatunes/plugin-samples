@@ -6,7 +6,7 @@
     </prerequisites>
     <groupId>com.beatunes</groupId>
     <artifactId>keytogrouping</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>beaTunes plugin that copies key values to grouping</name>
     <url>http://www.beatunes.com/</url>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.tagtraum</groupId>
             <artifactId>beatunes</artifactId>
-            <version>4.6.0</version>
+            <version>5.0.0-EA4-SNAPSHOT</version>
             <exclusions>
                 <!-- exclude some dependencies that are not in public repositories -->
                 <exclusion>

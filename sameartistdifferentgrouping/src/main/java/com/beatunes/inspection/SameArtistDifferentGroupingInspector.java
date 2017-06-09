@@ -8,7 +8,7 @@ package com.beatunes.inspection;
 
 import com.tagtraum.beatunes.BeaTunes;
 import com.tagtraum.beatunes.inspection.*;
-import com.tagtraum.beatunes.library.ITunesMusicLibrary;
+import com.tagtraum.beatunes.library.MediaLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,7 +69,7 @@ public class SameArtistDifferentGroupingInspector extends Inspector {
     public void inspect(final InspectionProgressListener inspectionProgressListener) {
         clearIssues();
         final Set<String> artists = new HashSet<>();
-        final ITunesMusicLibrary library = getApplication().getiTunesMusicLibrary();
+        final MediaLibrary library = getApplication().getMediaLibrary();
         if (LOG.isDebugEnabled()) LOG.debug("Getting all artists...");
         artists.addAll(library.getSongPropertyValues("artist", new ArrayList<>()));
         if (LOG.isDebugEnabled()) LOG.debug("Getting all albumArtists...");
@@ -81,7 +81,7 @@ public class SameArtistDifferentGroupingInspector extends Inspector {
         final List<String> artistList = new ArrayList<>(artists);
         final Collator collator = Collator.getInstance();
         collator.setStrength(Collator.SECONDARY);
-        Collections.sort(artistList, collator);
+        artistList.sort(collator);
 
         int i = 0;
         for (final String artist : artistList) {

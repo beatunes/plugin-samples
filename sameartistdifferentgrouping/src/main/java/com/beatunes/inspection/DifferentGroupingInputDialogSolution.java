@@ -8,7 +8,7 @@ package com.beatunes.inspection;
 
 import com.tagtraum.audiokern.AudioSong;
 import com.tagtraum.beatunes.MessageDialog;
-import com.tagtraum.beatunes.inspection.Issue;
+import com.tagtraum.beatunes.inspection.CallableSolution;
 import com.tagtraum.beatunes.songinfo.WordListSource;
 import com.tagtraum.core.swing.AutoCompletion;
 import com.tagtraum.core.swing.Job;
@@ -20,7 +20,6 @@ import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.text.Collator;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -33,12 +32,12 @@ public class DifferentGroupingInputDialogSolution extends DifferentGroupingSolut
 
     private static final Logger LOG = LoggerFactory.getLogger(DifferentGroupingInputDialogSolution.class);
 
-    public DifferentGroupingInputDialogSolution(final Issue issue) {
+    public DifferentGroupingInputDialogSolution(final DifferentGroupingIssue issue) {
         super(issue);
     }
 
     @Override
-    public boolean solveIssue(final Collection<AudioSong> songs, final boolean allowUserInteraction) {
+    public CallableSolution createCallable(final Collection<AudioSong> songs, final boolean allowUserInteraction) {
         final List<String> sortedGroupings = getSortedGroupings();
         final JComboBox<String> groupingComboBox = new JComboBox<>(sortedGroupings.toArray(new String[sortedGroupings.size()]));
         groupingComboBox.setOpaque(false);
@@ -62,27 +61,24 @@ public class DifferentGroupingInputDialogSolution extends DifferentGroupingSolut
         final MessageDialog messageDialog = new MessageDialog(getApplication().getMainWindow(),
                 getApplication().localize("Please select or enter a grouping"), JOptionPane.QUESTION_MESSAGE,
                 JOptionPane.OK_CANCEL_OPTION, groupingComboBox);
-        if (messageDialog.showDialog() == JOptionPane.CANCEL_OPTION) return false;
+        if (messageDialog.showDialog() == JOptionPane.CANCEL_OPTION) return null;
         // compute list before changing things...
         setGrouping((String) groupingComboBox.getSelectedItem());
-        return super.solveIssue(songs, true);
+        return super.createCallable(songs, true);
     }
 
     private List<String> getSortedGroupings() {
         List<String> groupings;
         try {
-            groupings = Job.getDefaultJob().submit(() -> {
-                final List<String> list = getApplication().getiTunesMusicLibrary().getSongPropertyValues("grouping");
-                return list;
-            }).get();
+            groupings = Job.getDefaultJob().submit(() -> getApplication().getMediaLibrary().<String>getSongPropertyValues("grouping")).get();
         } catch (InterruptedException | ExecutionException e) {
             LOG.error(e.toString(), e);
             // dumb fallback
-            groupings = getApplication().getiTunesMusicLibrary().getSongPropertyValues("grouping");
+            groupings = getApplication().getMediaLibrary().getSongPropertyValues("grouping");
         }
         final Collator collator = Collator.getInstance(getApplication().getLocale());
         collator.setStrength(Collator.PRIMARY);
-        Collections.sort(groupings, collator);
+        groupings.sort(collator);
         if (LOG.isDebugEnabled()) LOG.debug("Groupings: " + groupings);
         return groupings;
     }

@@ -6,8 +6,6 @@
  */
 package com.beatunes.inspection;
 
-import com.tagtraum.beatunes.inspection.Issue;
-
 /**
  * Most Used Grouping Solution.
  *
@@ -15,7 +13,7 @@ import com.tagtraum.beatunes.inspection.Issue;
  */
 public class MostUsedGroupingSolution extends DifferentGroupingSolution {
 
-    public MostUsedGroupingSolution(final Issue issue, final String grouping) {
+    public MostUsedGroupingSolution(final DifferentGroupingIssue issue, final String grouping) {
         super(issue, grouping);
     }
 
