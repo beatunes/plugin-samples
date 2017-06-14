@@ -5,7 +5,7 @@
     </prerequisites>
     <groupId>com.beatunes</groupId>
     <artifactId>similarsongstable</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>beaTunes plugin that shows the content of the hidden similar songs playlist</name>
     <url>http://www.beatunes.com/</url>
