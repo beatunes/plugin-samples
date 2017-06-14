@@ -5,7 +5,7 @@
     </prerequisites>
     <groupId>com.beatunes</groupId>
     <artifactId>keytogrouping</artifactId>
-    <version>3.1.2</version>
+    <version>3.1.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>beaTunes plugin that copies key values to grouping</name>
     <url>http://www.beatunes.com/</url>
