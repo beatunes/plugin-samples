@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.tagtraum</groupId>
             <artifactId>beatunes</artifactId>
-            <version>5.0.0-EA4-SNAPSHOT</version>
+            <version>5.0.0</version>
             <exclusions>
                 <!-- exclude some dependencies that are not in public repositories -->
                 <exclusion>
