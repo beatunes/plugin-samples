@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file contains a list of plugins to be instantiated by beaTunes -->
+<plugins>
+    <name>Similar Songs Table</name>
+    <id>similarsongstable</id>
+    <version>${pom.version}</version>
+    <description>beaTunes plugin that shows the content of the hidden similar songs playlist. A new menu item is added to the "Controls" menu.</description>
+    <license>
+        <name>GNU Lesser General Public License 2.1</name>
+        <url>http://www.gnu.org/licenses/lgpl.txt</url>
+    </license>
+    <change-notes>1.0.0
+- First release.
+    </change-notes>
+    <vendor>
+        <name>tagtraum industries incorporated</name>
+        <url>http://www.tagtraum.com/</url>
+        <email>support@tagtraum.com</email>
+        <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
+    </vendor>
+    <beatunes-version>
+        <min>5.0.0</min>
+        <max>5.9.9</max>
+    </beatunes-version>
+
+    <!-- Analysis Tasks -->
+    <plugin class="com.beatunes.similarsongstable.ShowSimilarSongsAction"/>
+</plugins>

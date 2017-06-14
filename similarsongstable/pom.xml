@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <prerequisites>
+        <maven>3.0.5</maven>
+    </prerequisites>
+    <groupId>com.beatunes</groupId>
+    <artifactId>similarsongstable</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>beaTunes plugin that shows the content of the hidden similar songs playlist</name>
+    <url>http://www.beatunes.com/</url>
+    <developers>
+        <developer>
+            <name>Hendrik Schreiber</name>
+            <email>hs@tagtraum.com</email>
+            <url>http://www.tagtraum.com/</url>
+            <organization>tagtraum industries incorporated</organization>
+            <organizationUrl>http://www.tagtraum.com/</organizationUrl>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License 2.1</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+        </license>
+    </licenses>
+    <repositories>
+        <repository>
+            <id>beatunes</id>
+            <name>beaTunes Repository</name>
+            <url>https://www.beatunes.com/repo/maven2</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.tagtraum</groupId>
+            <artifactId>beatunes</artifactId>
+            <version>5.0.0</version>
+            <exclusions>
+                <!-- exclude some dependencies that are not in public repositories -->
+                <exclusion>
+                    <groupId>com.sun.media.jai</groupId>
+                    <artifactId>jai-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.media.jai</groupId>
+                    <artifactId>jai-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.explodingpixels</groupId>
+                    <artifactId>mac_widgets</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.jthink</groupId>
+                    <artifactId>jaudiotagger</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>META-INF/plugin.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <extensions>
+            <!-- Required because of HTTPS peer authentication issues -->
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-http</artifactId>
+                <version>2.10</version>
+            </extension>
+        </extensions>
+    </build>
+    <scm>
+        <connection>scm:git:git://github.com/beatunes/plugin-samples.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/beatunes/plugin-samples.git</developerConnection>
+        <url>https://github.com/beatunes/plugin-samples/tree/master/similarsongstable</url>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/beatunes/plugin-samples/issues</url>
+    </issueManagement>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+</project>
