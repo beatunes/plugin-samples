@@ -4,7 +4,9 @@
     <name>Copy key to comment</name>
     <id>keytocomment</id>
     <version>${pom.version}</version>
-    <description>Analysis task that copies the key value to the comment field.</description>
+    <description>Analysis task that copies the key value to the comment field.
+        Note that the same functionality is already contained in beaTunes.
+        This plugin is illustration purposes only.</description>
     <license>
         <name>GNU Lesser General Public License 2.1</name>
         <url>http://www.gnu.org/licenses/lgpl.txt</url>
