@@ -22,6 +22,9 @@ import com.tagtraum.core.metric.Metric;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 
 /**
@@ -86,6 +89,20 @@ public class ShowSimilarSongsAction extends BaseAction {
             JOptionPane.DEFAULT_OPTION, songTable.getComponent());
         dialog.setModal(false);
         dialog.setTitle("Similar Songs Playlist");
+
+        // register repaint listener, so that the little speaker icon is rendered correctly
+        final PropertyChangeListener listener = event -> songTable.getSongTable().repaint();
+        getApplication().getPlayer().addPropertyChangeListener("song", listener);
+        getApplication().getPlayer().addPropertyChangeListener("paused", listener);
+
+        // unregister repaint listener, when the dialog is closed
+        dialog.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(final WindowEvent e) {
+                getApplication().getPlayer().removePropertyChangeListener("song", listener);
+                getApplication().getPlayer().removePropertyChangeListener("paused", listener);
+            }
+        });
         dialog.showDialog();
     }
 }

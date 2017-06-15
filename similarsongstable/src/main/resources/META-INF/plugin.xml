@@ -9,7 +9,10 @@
         <name>GNU Lesser General Public License 2.1</name>
         <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
-    <change-notes>1.0.0
+    <change-notes>1.0.1
+- Improved repaint behavior
+
+1.0.0
 - First release.
     </change-notes>
     <vendor>
