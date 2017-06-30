@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file contains a list of plugins to be instantiated by beaTunes -->
+<plugins>
+    <name>AcousticBrainz Submit</name>
+    <id>abzsubmit</id>
+    <version>${pom.version}</version>
+    <description>Analysis task that executes the AcousticBrainz feature extractor and submits the results to the AcousticBrainz site.</description>
+    <license>
+        <name>GNU Affero General Public License 3.0</name>
+        <url>https://www.gnu.org/licenses/agpl-3.0.txt</url>
+    </license>
+    <change-notes>1.0.0
+- First release.
+    </change-notes>
+    <vendor>
+        <name>tagtraum industries incorporated</name>
+        <url>http://www.tagtraum.com/</url>
+        <email>support@tagtraum.com</email>
+        <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
+    </vendor>
+    <beatunes-version>
+        <min>5.0.0</min>
+        <max>5.9.9</max>
+    </beatunes-version>
+
+    <!-- Analysis Tasks -->
+    <plugin class="com.beatunes.acousticbrainz.AcousticBrainzSubmit"/>
+</plugins>
