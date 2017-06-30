@@ -51,7 +51,7 @@ The plugin itself is in the [public domain](https://creativecommons.org/share-yo
 ## More
 
 For change notes and other plugin-specific infos, please see the plugin descriptor
-[`src/main/resources/META-INF/plugin.xml`](https://raw.githubusercontent.com/beatunes/plugin-samples/master/similarsongstable/src/main/resources/META-INF/plugin.xml).
+[`src/main/resources/META-INF/plugin.xml`](https://raw.githubusercontent.com/beatunes/plugin-samples/master/abzsubmit/src/main/resources/META-INF/plugin.xml).
 For more info on developing plugins, please visit http://www.beatunes.com/beatunes-plugin-api.html
 
 *Enjoy.*
