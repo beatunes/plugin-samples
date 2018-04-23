@@ -7,7 +7,7 @@
     <artifactId>bandcamptags</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>beaTunes plugin that copies key values to comment</name>
+    <name>Analysis task that imports artist-level tags from bandcamp.</name>
     <url>http://www.beatunes.com/</url>
     <developers>
         <developer>
