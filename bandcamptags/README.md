@@ -1,17 +1,14 @@
 # README
 
-## beaTunes plugin to copy Key to Comment
+## beaTunes plugin to import artist-level tags from bandcamp
 
-This plugin requires [beaTunes](http://www.beatunes.com/) 5.0.0 or later.
+This plugin requires [beaTunes](http://www.beatunes.com/) 5.1.4 or later.
 It will not work with earlier versions.
-
-It is purely meant as a demo plugin, as its functionality is already built into beaTunes
-(starting with [version 4.5](http://blog.beatunes.com/2015/08/looking-good-beatunes-45.html)).
 
 
 ## Installation
 
-To install, place the jar (`keytocomment-x.y.z.jar`) into beaTunes'
+To install, place the jar (`bandcamptags-x.y.z.jar`) into beaTunes'
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
 - Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
