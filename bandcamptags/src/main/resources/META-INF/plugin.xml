@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file contains a list of plugins to be instantiated by beaTunes -->
+<plugins>
+    <name>Bandcamp Tags</name>
+    <id>bandcamptags</id>
+    <version>${pom.version}</version>
+    <description>Analysis task that imports artist-level tags from bandcamp.</description>
+    <license>
+        <name>GNU Lesser General Public License 2.1</name>
+        <url>http://www.gnu.org/licenses/lgpl.txt</url>
+    </license>
+    <change-notes>1.0.0:
+- First version
+    </change-notes>
+    <vendor>
+        <name>tagtraum industries incorporated</name>
+        <url>http://www.tagtraum.com/</url>
+        <email>support@tagtraum.com</email>
+        <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
+    </vendor>
+    <beatunes-version>
+        <min>5.1.4</min>
+        <max>5.9.9</max>
+    </beatunes-version>
+
+    <!-- Analysis Tasks -->
+    <plugin class="com.beatunes.bandcamptags.BandcampTags"/>
+</plugins>
