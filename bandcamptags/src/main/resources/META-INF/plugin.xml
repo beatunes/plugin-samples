@@ -9,7 +9,11 @@
         <name>GNU Lesser General Public License 2.1</name>
         <url>http://www.gnu.org/licenses/lgpl.txt</url>
     </license>
-    <change-notes>1.0.0:
+    <change-notes>1.0.1:
+- Artist- and track-level lookup.
+- Lookup Bandcamp ids on OnlineDB before tag lookup.
+
+1.0.0:
 - First version
     </change-notes>
     <vendor>
@@ -19,7 +23,7 @@
         <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
     </vendor>
     <beatunes-version>
-        <min>5.1.4</min>
+        <min>5.1.5</min>
         <max>5.9.9</max>
     </beatunes-version>
 

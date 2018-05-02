@@ -5,7 +5,7 @@
     </prerequisites>
     <groupId>com.beatunes</groupId>
     <artifactId>bandcamptags</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>Analysis task that imports artist-level tags from bandcamp.</name>
     <url>http://www.beatunes.com/</url>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.tagtraum</groupId>
             <artifactId>beatunes</artifactId>
-            <version>5.1.4</version>
+            <version>5.1.5</version>
             <exclusions>
                 <!-- exclude some dependencies that are not in public repositories -->
                 <exclusion>

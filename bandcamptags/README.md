@@ -2,7 +2,7 @@
 
 ## beaTunes plugin to import artist-level tags from bandcamp
 
-This plugin requires [beaTunes](http://www.beatunes.com/) 5.1.4 or later.
+This plugin requires [beaTunes](http://www.beatunes.com/) 5.1.5 or later.
 It will not work with earlier versions.
 
 
