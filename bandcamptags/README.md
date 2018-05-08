@@ -28,7 +28,7 @@ You will find the resulting jar file in the `target` subdirectory.
 ## More
 
 For change notes and other plugin-specific infos, please see the plugin descriptor
-[`src/main/resources/META-INF/plugin.xml`](https://raw.githubusercontent.com/beatunes/plugin-samples/master/keytocomment/src/main/resources/META-INF/plugin.xml).
+[`src/main/resources/META-INF/plugin.xml`](https://raw.githubusercontent.com/beatunes/plugin-samples/master/bandcamptags/src/main/resources/META-INF/plugin.xml).
 For more info on developing plugins, please visit http://www.beatunes.com/beatunes-plugin-api.html
 
 Enjoy.
