@@ -13,6 +13,7 @@ import com.tagtraum.beatunes.analysis.Task;
 import com.tagtraum.beatunes.messages.Message;
 import com.tagtraum.beatunes.onlinedb.ReferenceSong;
 import com.tagtraum.ubermusic.discogs.Discogs;
+import com.tagtraum.ubermusic.discogs.DiscogsTrack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -104,21 +105,35 @@ public class DiscogsGenre extends SongAnalysisTask {
             final List<AudioSong> songs = discogs.lookup(song);
             if (!songs.isEmpty()) {
                 final AudioSong firstMatch = songs.get(0);
-                if (firstMatch.getGenre() != null && !firstMatch.getGenre().trim().isEmpty()) {
-                    final String discogsGenre = firstMatch.getGenre().trim();
-                    if (LOG.isDebugEnabled()) LOG.debug("Discogs genre for " + song + ": " + discogsGenre);
-                    song.setGenre(discogsGenre);
+
+                final DiscogsTrack discogsTrack = (DiscogsTrack) firstMatch;
+                final List<String> styles = (List<String>)discogsTrack.getRelease().getDocument().get("styles");
+                if (styles != null && !styles.isEmpty()) {
+                    final String style = styles.get(0).trim();
+                    if (LOG.isDebugEnabled()) LOG.debug("Discogs style for " + song + ": " + style);
+                    song.setGenre(style);
                 } else {
-                    if (LOG.isDebugEnabled()) LOG.debug("Found no discogs genre for " + song);
+                    if (LOG.isDebugEnabled()) LOG.debug("Found no discogs style for " + song + ". Trying genre...");
+                    if (firstMatch.getGenre() != null && !firstMatch.getGenre().trim().isEmpty()) {
+                        final String discogsGenre = firstMatch.getGenre().trim();
+                        if (LOG.isDebugEnabled()) LOG.debug("Discogs genre for " + song + ": " + discogsGenre);
+                        song.setGenre(discogsGenre);
+                    } else {
+                        if (LOG.isDebugEnabled()) LOG.debug("Found no discogs genre for " + song);
+                        getMessagePanel().addMessage(new Message(getApplication().localize("Analysis"),
+                            "Failed to find genre for '" + song.getName() + "' on Discogs.", song.getId()));
+                    }
                 }
             } else {
                 if (LOG.isDebugEnabled()) LOG.debug("Failed to find track on discogs: " + song);
+                getMessagePanel().addMessage(new Message(getApplication().localize("Analysis"),
+                    "Failed to find track '" + song.getName() + "' on Discogs.", song.getId()));
             }
         } catch (Exception e) {
             LOG.error("Failed to fetch discogs genre for " + song, e);
             final String message = e.getLocalizedMessage() == null ? e.toString() : e.getLocalizedMessage();
             getMessagePanel().addMessage(new Message(getApplication().localize("Analysis"),
-                "Failed to find genre tag for '" + song.getName() + "': " + message, song.getId()));
+                "Failed to find Discogs genre tag for '" + song.getName() + "': " + message, song.getId()));
         }
     }
 

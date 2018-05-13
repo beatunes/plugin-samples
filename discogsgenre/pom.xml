@@ -5,7 +5,7 @@
     </prerequisites>
     <groupId>com.beatunes</groupId>
     <artifactId>discogsgenre</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>Analysis task that imports genre tags from Discogs (if available).</name>
     <url>http://www.beatunes.com/</url>
