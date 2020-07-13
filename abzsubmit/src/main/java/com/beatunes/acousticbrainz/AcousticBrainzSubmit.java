@@ -195,6 +195,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
             final String usedMBID = extractMBID(mbid, outputFile);
             postToAcousticBrainz(song, usedMBID, outputFile);
         } else {
+            LOG.error("Failed to analyze/submit " + song + ". Input file: " + inputFile);
             getMessagePanel().addMessage(new Message(
                 getApplication().localize("Analysis"),
                 "Failed to submit '" + song.getName() + "' to AcousticBrainz. Exit code " + exitCode + ". See log for details.",
