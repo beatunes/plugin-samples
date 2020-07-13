@@ -57,6 +57,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
     private static final String STREAMING_EXTRACTOR_MUSIC = "streaming_extractor_music" + (OperatingSystem.isMac() ? "" : ".exe");
     private static final String PROFILE_YAML = "profile.yaml";
     private static final int OK = 0;
+    private static final int THIRTY_MINUTES = 1000 * 60 * 30;
     private static Path executable;
     private static boolean hookRegistered;
 
@@ -117,7 +118,10 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
     @Override
     public void runBefore(final Task task) throws AnalysisException {
         final AudioSong song = getSong();
-        if (song != null && song.getFile() != null) {
+        // AC submit tends to crash for very long tracks and
+        // the results aren't meaningful anyway, because of averaging.
+        // Therefore we do not submit anything that's longer than 30min
+        if (song != null && song.getTotalTime() < THIRTY_MINUTES && song.getFile() != null) {
             final List<Path> filesToDelete = new ArrayList<>();
             try {
                 final String mbid = getMBID(song);
