@@ -9,7 +9,11 @@
         <name>GNU Affero General Public License 3.0</name>
         <url>https://www.gnu.org/licenses/agpl-3.0.txt</url>
     </license>
-    <change-notes>1.0.0
+    <change-notes>1.0.1
+- Better error reporting
+- Skip tracks longer than 30min to avoid acsubmit crash
+
+1.0.0
 - First release.
     </change-notes>
     <vendor>

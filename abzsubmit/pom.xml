@@ -5,7 +5,7 @@
     </prerequisites>
     <groupId>com.beatunes</groupId>
     <artifactId>abzsubmit</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>Analysis task that executes the AcousticBrainz feature extractor and submits the results to the AcousticBrainz site.</name>
     <url>http://www.beatunes.com/</url>
