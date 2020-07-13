@@ -118,10 +118,14 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
     @Override
     public void runBefore(final Task task) throws AnalysisException {
         final AudioSong song = getSong();
-        // AC submit tends to crash for very long tracks and
-        // the results aren't meaningful anyway, because of averaging.
-        // Therefore we do not submit anything that's longer than 30min
-        if (song != null && song.getTotalTime() < THIRTY_MINUTES && song.getFile() != null) {
+        if (song != null && song.getFile() != null) {
+            // AC submit tends to crash for very long tracks and
+            // the results aren't meaningful anyway, because of averaging.
+            // Therefore we do not submit anything that's longer than 30min
+            if (song.getTotalTime() >= THIRTY_MINUTES) {
+                if (LOG.isDebugEnabled()) LOG.debug("Skipping track, because it is too long: " + song);
+                return;
+            }
             final List<Path> filesToDelete = new ArrayList<>();
             try {
                 final String mbid = getMBID(song);
