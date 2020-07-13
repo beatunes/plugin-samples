@@ -280,7 +280,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
         final URL url = new URL("https://acousticbrainz.org/" + mbid + "/low-level");
         if (LOG.isDebugEnabled()) LOG.debug("Posting to " + url);
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setReadTimeout(5000);
+        connection.setReadTimeout(10000);
         connection.setConnectTimeout(5000);
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);

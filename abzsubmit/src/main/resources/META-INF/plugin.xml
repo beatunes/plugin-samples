@@ -12,6 +12,7 @@
     <change-notes>1.0.1
 - Better error reporting
 - Skip tracks longer than 30min to avoid acsubmit crash
+- Increased socket read timeout to give AB more time
 
 1.0.0
 - First release.
