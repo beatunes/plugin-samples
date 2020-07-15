@@ -9,7 +9,10 @@
         <name>GNU Affero General Public License 3.0</name>
         <url>https://www.gnu.org/licenses/agpl-3.0.txt</url>
     </license>
-    <change-notes>1.0.2
+    <change-notes>1.0.3
+- Updated AcousticBrainz endpoint URL.
+
+1.0.2
 - Force lower case MBIDs to avoid 405 error
 
 1.0.1

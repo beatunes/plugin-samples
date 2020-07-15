@@ -281,7 +281,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
     }
 
     private void postToAcousticBrainz(final AudioSong song, final String mbid, final Path file) throws IOException {
-        final URL url = new URL("https://acousticbrainz.org/" + mbid.toLowerCase() + "/low-level");
+        final URL url = new URL("https://acousticbrainz.org/api/v1/" + mbid.toLowerCase() + "/low-level");
         if (LOG.isDebugEnabled()) LOG.debug("Posting to " + url);
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(10000);
