@@ -171,7 +171,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
                          final List<Path> deleteList) throws IOException, UnsupportedAudioFileException, InterruptedException, ParseException {
         final ProgressListener progressListener = getAnalysisProgress().getOperationProgressListener();
         progressListener.progress(0.25f);
-        final List<String> allMBIDs = getMBIDs(song);
+        final Set<String> allMBIDs = getMBIDs(song);
         if (allMBIDs.size() > 1) {
             LOG.warn("Track " + song.getName() + ". Found multiple MBIDs: " + allMBIDs);
         } else {
@@ -179,7 +179,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
         }
         // AudioMetaData is the direct access to the file, without going through
         // any indirection like the beaTunes internal database
-        final List<String> embeddedMBID = getMBIDs(song.getImplementation(AudioMetaData.class));
+        final Set<String> embeddedMBID = getMBIDs(song.getImplementation(AudioMetaData.class));
         final Path inputFile;
         if (embeddedMBID.isEmpty()) {
             if (LOG.isInfoEnabled()) LOG.info("Track " + song.getName() + ". MBID is not embedded. Embedding " + mbid + " into copy. Consider embedding MBIDs before running this task.");
@@ -208,11 +208,13 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
         }
     }
 
-    private List<String> getMBIDs(final AudioSong song) {
+    private Set<String> getMBIDs(final AudioSong song) {
         return song.getTrackIds()
-                            .stream()
-                            .filter(id -> AudioId.MUSIC_BRAINZ_TRACK.equals(id.getGeneratorName()))
-                            .map(AudioId::getId).collect(Collectors.toList());
+            .stream()
+            .filter(id -> AudioId.MUSIC_BRAINZ_TRACK.equals(id.getGeneratorName()))
+            .map(AudioId::getId)
+            .map(String::toLowerCase)
+            .collect(Collectors.toSet());
     }
 
     @NotNull
@@ -241,7 +243,9 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
             final JSONObject metadata = (JSONObject)json.get("metadata");
             final JSONObject tags = (JSONObject)metadata.get("tags");
             final JSONArray extractedMBIDs = (JSONArray)tags.get("musicbrainz_trackid");
-            final String extractedMBID = extractedMBIDs != null && !extractedMBIDs.isEmpty() ? (String)extractedMBIDs.get(0) : null;
+            final String extractedMBID = extractedMBIDs != null && !extractedMBIDs.isEmpty()
+                ? ((String)extractedMBIDs.get(0)).toLowerCase()
+                : null;
             if (extractedMBID != null && !extractedMBID.equals(mbid)) {
                 if (LOG.isInfoEnabled()) LOG.info("Replaced originally found MBID " + mbid + " with " + extractedMBID);
                 usedMBID = extractedMBID;
@@ -277,7 +281,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
     }
 
     private void postToAcousticBrainz(final AudioSong song, final String mbid, final Path file) throws IOException {
-        final URL url = new URL("https://acousticbrainz.org/" + mbid + "/low-level");
+        final URL url = new URL("https://acousticbrainz.org/" + mbid.toLowerCase() + "/low-level");
         if (LOG.isDebugEnabled()) LOG.debug("Posting to " + url);
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(10000);
@@ -328,24 +332,26 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
      */
     private String getMBID(final AudioSong song) {
         return song.getTrackIds()
+            .stream()
+            .filter(id -> AudioId.MUSIC_BRAINZ_TRACK.equals(id.getGeneratorName()))
+            .map(AudioId::getId)
+            .map(String::toLowerCase)
+            .findFirst().orElseGet(() -> {
+                // there is no MBID embedded, let's look one up
+                final OnlineDB onlineDB = getApplication().getPluginManager().getImplementation(OnlineDB.class);
+                try {
+                    return onlineDB.lookup(song)
                         .stream()
+                        .flatMap(s -> s.getTrackIds().stream())
                         .filter(id -> AudioId.MUSIC_BRAINZ_TRACK.equals(id.getGeneratorName()))
                         .map(AudioId::getId)
-                        .findFirst().orElseGet(() -> {
-                            // there is no MBID embedded, let's look one up
-                            final OnlineDB onlineDB = getApplication().getPluginManager().getImplementation(OnlineDB.class);
-                            try {
-                                return onlineDB.lookup(song)
-                                    .stream()
-                                    .flatMap(s -> s.getTrackIds().stream())
-                                    .filter(id -> AudioId.MUSIC_BRAINZ_TRACK.equals(id.getGeneratorName()))
-                                    .map(AudioId::getId)
-                                    .findFirst().orElse(null);
-                            } catch (Exception e) {
-                                LOG.error("Failed to look up MBID via OnlineDB.", e);
-                            }
-                            return null;
-                        });
+                        .map(String::toLowerCase)
+                        .findFirst().orElse(null);
+                } catch (Exception e) {
+                    LOG.error("Failed to look up MBID via OnlineDB.", e);
+                }
+                return null;
+            });
     }
 
     private static Path extractBinary() throws IOException {
