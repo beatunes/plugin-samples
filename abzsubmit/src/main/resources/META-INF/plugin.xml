@@ -11,6 +11,7 @@
     </license>
     <change-notes>1.0.3
 - Updated AcousticBrainz endpoint URL.
+- Fixed FileNotFoundException for temp file.
 
 1.0.2
 - Force lower case MBIDs to avoid 405 error

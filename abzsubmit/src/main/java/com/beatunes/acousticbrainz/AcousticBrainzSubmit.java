@@ -17,6 +17,7 @@ import com.tagtraum.beatunes.analysis.AudioAnalysisTask;
 import com.tagtraum.beatunes.analysis.Task;
 import com.tagtraum.beatunes.messages.Message;
 import com.tagtraum.beatunes.onlinedb.OnlineDB;
+import com.tagtraum.core.FileId;
 import com.tagtraum.core.FileUtilities;
 import com.tagtraum.core.OperatingSystem;
 import com.tagtraum.core.ProgressListener;
@@ -37,6 +38,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.PosixFilePermission;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -222,8 +224,14 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
         final Path inputFile;// at this point, we don't want to manipulate the original file...
         inputFile = Files.createTempFile("copy", FileUtilities.getExtension(song.getFile()));
         Files.copy(song.getFile(), inputFile, StandardCopyOption.REPLACE_EXISTING);
+
+        // provide fileId and attributes to work around dir access caching issue.
+        final FileId fileId = new FileId(inputFile);
+        final BasicFileAttributes basicFileAttributes = Files.readAttributes(inputFile, BasicFileAttributes.class);
+
         // embed mbid into the copy
-        AudioMetaData.get(inputFile).getTrackIds().add(new StandardAudioId(AudioId.MUSIC_BRAINZ_TRACK, mbid));
+        AudioMetaData.get(inputFile, basicFileAttributes, fileId, true)
+            .getTrackIds().add(new StandardAudioId(AudioId.MUSIC_BRAINZ_TRACK, mbid));
         return inputFile;
     }
 
