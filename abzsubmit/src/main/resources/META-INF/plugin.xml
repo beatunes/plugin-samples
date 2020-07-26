@@ -9,7 +9,10 @@
         <name>GNU Affero General Public License 3.0</name>
         <url>https://www.gnu.org/licenses/agpl-3.0.txt</url>
     </license>
-    <change-notes>1.0.3
+    <change-notes>1.0.4
+- Log exit code, if something goes wrong.
+
+1.0.3
 - Updated AcousticBrainz endpoint URL.
 - Fixed FileNotFoundException for temp file.
 
