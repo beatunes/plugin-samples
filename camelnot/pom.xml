@@ -2,10 +2,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.beatunes</groupId>
     <artifactId>camelnot</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>beaTunes plugin renders the key in the CamelNot format</name>
-    <url>http://www.beatunes.com/</url>
+    <url>https://www.beatunes.com/</url>
     <developers>
         <developer>
             <name>Hendrik Schreiber</name>
