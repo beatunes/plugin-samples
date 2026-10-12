@@ -13,8 +13,7 @@ import com.tagtraum.beatunes.inspection.Solution;
 import com.tagtraum.beatunes.library.LibraryDescriptor;
 import com.tagtraum.beatunes.library.Song;
 import com.tagtraum.beatunes.library.itunes.ITunesLibraryDescriptor;
-import com.tagtraum.japlscript.JaplScript;
-import com.tagtraum.japlscript.Session;
+import com.tagtraum.japlscript.execution.Session;
 import com.tagtraum.tunes.Track;
 import com.tagtraum.tunes.TunesUtilities;
 import org.slf4j.Logger;
@@ -112,7 +111,7 @@ public class DifferentGroupingSolution implements Solution<DifferentGroupingIssu
                     }
                     try {
                         TunesUtilities.invokeAndWait(() -> {
-                            final Session session = JaplScript.startSession();
+                            final Session session = Session.startSession();
                             try {
                                 // persist changes
                                 final List<Track> tracks = getTracks(inspector.getApplication(), getSongIds());

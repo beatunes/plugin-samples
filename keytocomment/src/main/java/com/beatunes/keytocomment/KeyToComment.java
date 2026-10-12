@@ -14,17 +14,16 @@ import com.tagtraum.beatunes.analysis.SongAnalysisTask;
 import com.tagtraum.beatunes.analysis.Task;
 import com.tagtraum.beatunes.keyrenderer.DefaultKeyTextRenderer;
 import org.jruby.RubyObject;
-import org.python.core.PyProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.util.List;
 
 /**
  * Copies tonal key info to the comments field using the configured renderer.
  * Note that this functionality is already built into beaTunes
- * (starting with <a href="http://blog.beatunes.com/2015/08/looking-good-beatunes-45.html">version 4.5</a>).
+ * (starting with <a href="https://blog.beatunes.com/2015/08/looking-good-beatunes-45.html">version 4.5</a>).
  * This plugin therefore only serves demo purposes.
  *
  * @author <a href="mailto:hs@tagtraum.com">Hendrik Schreiber</a>
@@ -205,8 +204,8 @@ public class KeyToComment extends SongAnalysisTask {
     }
 
     /**
-     * Ruby and Python object's classnames are not the same after the JVM exists.
-     * Therefore we have to get their type's name, which is persistent.
+     * The class name of a JRuby object is not the same after the JVM exits.
+     * Therefore we have to get its type's name, which is persistent.
      *
      * @param renderer renderer
      * @return classname
@@ -215,8 +214,6 @@ public class KeyToComment extends SongAnalysisTask {
         final String classname;
         if (renderer instanceof RubyObject) {
             classname = "__jruby." + ((RubyObject)renderer).getMetaClass().getName();
-        } else if (renderer instanceof PyProxy) {
-            classname = "__jython." + ((PyProxy)renderer)._getPyInstance().getType().getName();
         } else {
             classname = renderer.getClass().getName();
         }

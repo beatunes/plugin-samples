@@ -3,15 +3,18 @@
 <plugins>
     <name>Copy key to comment</name>
     <id>keytocomment</id>
-    <version>${pom.version}</version>
+    <version>${project.version}</version>
     <description>Analysis task that copies the key value to the comment field.
         Note that the same functionality is already contained in beaTunes.
         This plugin is illustration purposes only.</description>
     <license>
         <name>GNU Lesser General Public License 2.1</name>
-        <url>http://www.gnu.org/licenses/lgpl.txt</url>
+        <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
     </license>
-    <change-notes>3.0.4:
+    <change-notes>3.0.5:
+- Update for beaTunes 6.
+
+3.0.4:
 - Update for beaTunes 5.
 
 3.0.3:
@@ -49,14 +52,14 @@ Update for beaTunes 2.1.
 First release.
     </change-notes>
     <vendor>
-        <name>tagtraum industries incorporated</name>
-        <url>http://www.tagtraum.com/</url>
-        <email>support@tagtraum.com</email>
-        <logo>http://www.tagtraum.com/images/tagtraum-logo.png</logo>
+        <name>Jalulo UG (haftungsbeschränkt)</name>
+        <url>https://www.jalulo.eu/</url>
+        <email>support@jalulo.eu</email>
+        <logo>https://www.jalulo.eu/images/jalulo_icon_256.png</logo>
     </vendor>
     <beatunes-version>
-        <min>5.0.0</min>
-        <max>5.9.9</max>
+        <min>6.0.0</min>
+        <max>6.9.9</max>
     </beatunes-version>
 
     <!-- Analysis Tasks -->

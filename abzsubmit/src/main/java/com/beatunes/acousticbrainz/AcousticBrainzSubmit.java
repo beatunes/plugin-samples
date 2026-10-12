@@ -29,10 +29,11 @@ import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -87,8 +88,8 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
             "spectral information and information for genres, moods, keys, scales and much more. The goal of AcousticBrainz is " +
             "to provide music technology researchers and open source hackers with a massive database of information about music.</p>" +
             "<p>AcousticBrainz is a joint effort between <a href=\"http://www.mtg.upf.edu/\">Music Technology Group</a> " +
-            "at Universitat Pompeu Fabra in Barcelona and the <a href=\"http://musicbrainz.org/\">MusicBrainz</a> project. It is " +
-            "not affiliated with <a href=\"https://www.beatunes.com\">beaTunes</a> or <a href=\"http://www.tagtraum.com\">tagtraum industries</a>, " +
+            "at Universitat Pompeu Fabra in Barcelona and the <a href=\"https://musicbrainz.org/\">MusicBrainz</a> project. It is " +
+            "not affiliated with <a href=\"https://www.beatunes.com\">beaTunes</a> or <a href=\"https://www.jalulo.eu/\">Jalulo</a>, " +
             "but some of the project's data is also used by beaTunes.</p>";
     }
 
@@ -289,7 +290,7 @@ public class AcousticBrainzSubmit extends AudioAnalysisTask {
     }
 
     private void postToAcousticBrainz(final AudioSong song, final String mbid, final Path file) throws IOException {
-        final URL url = new URL("https://acousticbrainz.org/api/v1/" + mbid.toLowerCase() + "/low-level");
+        final URL url = URI.create("https://acousticbrainz.org/api/v1/" + mbid.toLowerCase() + "/low-level").toURL();
         if (LOG.isDebugEnabled()) LOG.debug("Posting to " + url);
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setReadTimeout(10000);

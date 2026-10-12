@@ -2,7 +2,7 @@
 
 ## beaTunes plugin for the CamelNot key format
 
-This plugin requires [beaTunes](https://www.beatunes.com/) 5.0.0 or later.
+This plugin requires [beaTunes](https://www.beatunes.com/) 6.0.0 or later.
 It will not work with earlier versions.
 
 
@@ -11,7 +11,7 @@ It will not work with earlier versions.
 To install, place the jar (`camelnot-x.y.z.jar`) into beaTunes'
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
-- Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
+- Windows: `c:\Users\[username]\AppData\Local\jalulo\beaTunes\plugins`
 - macOS: `~/Library/Application Support/beaTunes/Plug-Ins`
 
 

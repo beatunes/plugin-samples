@@ -2,11 +2,11 @@
 
 ## beaTunes plugin to copy Key to Comment
 
-This plugin requires [beaTunes](http://www.beatunes.com/) 5.0.0 or later.
+This plugin requires [beaTunes](https://www.beatunes.com/) 6.0.0 or later.
 It will not work with earlier versions.
 
 It is purely meant as a demo plugin, as its functionality is already built into beaTunes
-(starting with [version 4.5](http://blog.beatunes.com/2015/08/looking-good-beatunes-45.html)).
+(starting with [version 4.5](https://blog.beatunes.com/2015/08/looking-good-beatunes-45.html)).
 
 
 ## Installation
@@ -14,13 +14,13 @@ It is purely meant as a demo plugin, as its functionality is already built into 
 To install, place the jar (`keytocomment-x.y.z.jar`) into beaTunes'
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
-- Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
+- Windows: `c:\Users\[username]\AppData\Local\jalulo\beaTunes\plugins`
 - macOS: `~/Library/Application Support/beaTunes/Plug-Ins`
 
 
 ## Building
 
-To compile from source, install [Maven 3](http://maven.apache.org/) and execute
+To compile from source, install [Maven 3](https://maven.apache.org/) and a JDK 25 or later, and execute
 
     mvn clean install
 
@@ -32,6 +32,6 @@ You will find the resulting jar file in the `target` subdirectory.
 
 For change notes and other plugin-specific infos, please see the plugin descriptor
 [`src/main/resources/META-INF/plugin.xml`](https://raw.githubusercontent.com/beatunes/plugin-samples/master/keytocomment/src/main/resources/META-INF/plugin.xml).
-For more info on developing plugins, please visit http://www.beatunes.com/beatunes-plugin-api.html
+For more info on developing plugins, please visit https://www.beatunes.com/en/beatunes-plugin-api.html
 
 Enjoy.

@@ -2,7 +2,7 @@
 
 ## beaTunes plugin that extracts acoustic features and submits them to AcousticBrainz
 
-This plugin requires [beaTunes](http://www.beatunes.com/) 5.0.0 or later.
+This plugin requires [beaTunes](https://www.beatunes.com/) 6.0.0 or later.
 It will not work with earlier versions.
 
 
@@ -11,7 +11,7 @@ It will not work with earlier versions.
 To install, place the jar (`abzsubmit-x.y.z.jar`) into beaTunes'
 plugin folder, remove older versions of the plugin and restart beaTunes.
 
-- Windows: `c:\Users\[username]\AppData\Local\tagtraum industries\beaTunes\plugins`
+- Windows: `c:\Users\[username]\AppData\Local\jalulo\beaTunes\plugins`
 - macOS: `~/Library/Application Support/beaTunes/Plug-Ins`
 
 When installed, a new task is available in the Analysis Options dialog.
@@ -19,7 +19,7 @@ When installed, a new task is available in the Analysis Options dialog.
 
 ## Building
 
-To compile from source, install [Maven 3](http://maven.apache.org/) and execute
+To compile from source, install [Maven 3](https://maven.apache.org/) and a JDK 25 or later, and execute
 
     mvn clean install
 
@@ -37,9 +37,9 @@ Note that the software provided by AcousticBrainz contains open source code from
 of other projects licensed under different licenses. Namely:
 
 - [libav](https://libav.org/download/) (LGPL)
-- [taglib](http://taglib.org) (LGPL)
-- [FFTW](http://www.fftw.org) (GPL)
-- [libyaml](http://pyyaml.org/wiki/LibYAML) (MIT)
+- [taglib](https://taglib.org) (LGPL)
+- [FFTW](https://www.fftw.org) (GPL)
+- [libyaml](https://pyyaml.org/wiki/LibYAML) (MIT)
 - [libsamplerate](http://www.mega-nerd.com/SRC/) (BSD)
 
 The plugin simply calls the AcousticBrainz executable, but does not incorporate its code
@@ -52,6 +52,6 @@ The plugin itself is in the [public domain](https://creativecommons.org/share-yo
 
 For change notes and other plugin-specific infos, please see the plugin descriptor
 [`src/main/resources/META-INF/plugin.xml`](https://raw.githubusercontent.com/beatunes/plugin-samples/master/abzsubmit/src/main/resources/META-INF/plugin.xml).
-For more info on developing plugins, please visit http://www.beatunes.com/beatunes-plugin-api.html
+For more info on developing plugins, please visit https://www.beatunes.com/en/beatunes-plugin-api.html
 
 *Enjoy.*

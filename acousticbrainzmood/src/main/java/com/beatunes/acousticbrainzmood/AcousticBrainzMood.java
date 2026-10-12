@@ -19,7 +19,7 @@ import com.tagtraum.ubermusic.acousticbrainz.AcousticBrainzSong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashSet;
@@ -51,7 +51,7 @@ public class AcousticBrainzMood extends SongAnalysisTask {
 
     @Override
     public String getDescription() {
-        return "<h1>Import Moods</h1><p>Attempts to derive mood values based in <a href=\"http://AcousticBrainz.org\">AcousticBrainz.org</a> data. Requires MusicBrainz ids for this to work.</p>";
+        return "<h1>Import Moods</h1><p>Attempts to derive mood values based in <a href=\"https://acousticbrainz.org\">AcousticBrainz.org</a> data. Requires MusicBrainz ids for this to work.</p>";
     }
 
     @Override

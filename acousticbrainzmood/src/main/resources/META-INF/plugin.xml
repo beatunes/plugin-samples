@@ -3,13 +3,16 @@
 <plugins>
     <name>AcousticBrainz.org Mood</name>
     <id>acousticbrainzmood</id>
-    <version>${pom.version}</version>
+    <version>${project.version}</version>
     <description>Analysis task that imports mood data from AcousticBrainz.org.</description>
     <license>
         <name>GNU Lesser General Public License 2.1</name>
-        <url>http://www.gnu.org/licenses/lgpl.txt</url>
+        <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
     </license>
-    <change-notes>0.9.3:
+    <change-notes>0.9.4:
+- Update for beaTunes 6.
+
+0.9.3:
 Update for beaTunes 5.
 
 0.9.2:
@@ -21,9 +24,15 @@ Update for beaTunes 4.5.x.
 0.9.0:
 First release.
     </change-notes>
+    <vendor>
+        <name>Jalulo UG (haftungsbeschränkt)</name>
+        <url>https://www.jalulo.eu/</url>
+        <email>support@jalulo.eu</email>
+        <logo>https://www.jalulo.eu/images/jalulo_icon_256.png</logo>
+    </vendor>
     <beatunes-version>
-        <min>5.0.0</min>
-        <max>5.9.9</max>
+        <min>6.0.0</min>
+        <max>6.9.9</max>
     </beatunes-version>
 
     <!-- Analysis Tasks -->
