@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.beatunes</groupId>
     <artifactId>bandcamptags</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>Analysis task that imports artist-level tags from bandcamp.</name>
     <url>https://www.beatunes.com/</url>

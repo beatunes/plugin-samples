@@ -1,6 +1,6 @@
 /*
  * =================================================
- * Copyright 2014 tagtraum industries incorporated
+ * Copyright 2014 Jalulo UG (haftungsbeschränkt)
  * All rights reserved.
  * =================================================
  */

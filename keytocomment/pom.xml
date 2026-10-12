@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.beatunes</groupId>
     <artifactId>keytocomment</artifactId>
-    <version>3.0.5-SNAPSHOT</version>
+    <version>3.0.5</version>
     <packaging>jar</packaging>
     <name>beaTunes plugin that copies key values to comment</name>
     <url>https://www.beatunes.com/</url>

@@ -1,6 +1,6 @@
 /*
  * =================================================
- * Copyright 2021 tagtraum industries incorporated
+ * Copyright 2021 Jalulo UG (haftungsbeschränkt)
  * All rights reserved.
  * =================================================
  */

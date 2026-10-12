@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.beatunes</groupId>
     <artifactId>discogsgenre</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>Analysis task that imports genre tags from Discogs (if available).</name>
     <url>https://www.beatunes.com/</url>
