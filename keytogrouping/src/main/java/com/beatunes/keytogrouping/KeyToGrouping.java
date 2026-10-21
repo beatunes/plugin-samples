@@ -1,6 +1,6 @@
 /*
  * =================================================
- * Copyright 2008 tagtraum industries incorporated
+ * Copyright 2008 Jalulo UG (haftungsbeschränkt)
  * All rights reserved.
  * =================================================
  */
@@ -14,11 +14,10 @@ import com.tagtraum.beatunes.analysis.SongAnalysisTask;
 import com.tagtraum.beatunes.analysis.Task;
 import com.tagtraum.beatunes.keyrenderer.DefaultKeyTextRenderer;
 import org.jruby.RubyObject;
-import org.python.core.PyProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.util.List;
 
 /**
@@ -156,8 +155,8 @@ public class KeyToGrouping extends SongAnalysisTask {
     }
 
     /**
-     * Ruby and Python object's classnames are not the same after the JVM exists.
-     * Therefore we have to get their type's name, which is persistent.
+     * The class name of a JRuby object is not the same after the JVM exits.
+     * Therefore we have to get its type's name, which is persistent.
      *
      * @param renderer renderer
      * @return classname
@@ -167,8 +166,6 @@ public class KeyToGrouping extends SongAnalysisTask {
         final String classname;
         if (renderer instanceof RubyObject) {
             classname = "__jruby." + ((RubyObject) renderer).getMetaClass().getName();
-        } else if (renderer instanceof PyProxy) {
-            classname = "__jython." + ((PyProxy) renderer)._getPyInstance().getType().getName();
         } else {
             classname = renderer.getClass().getName();
         }

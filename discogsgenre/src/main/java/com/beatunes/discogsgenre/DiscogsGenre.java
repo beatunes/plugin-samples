@@ -1,6 +1,6 @@
 /*
  * =================================================
- * Copyright 2018 tagtraum industries incorporated
+ * Copyright 2018 Jalulo UG (haftungsbeschränkt)
  * All rights reserved.
  * =================================================
  */
@@ -17,7 +17,7 @@ import com.tagtraum.ubermusic.discogs.DiscogsTrack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.util.List;
 import java.util.stream.Collectors;
 

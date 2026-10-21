@@ -3,27 +3,30 @@
 <plugins>
     <name>CamelNot Key Renderer</name>
     <id>camelnot</id>
-    <version>${pom.version}</version>
+    <version>${project.version}</version>
     <description>Musical key renderer for the CamelNot format.</description>
     <license>
         <name>GNU Lesser General Public License 2.1</name>
         <url>https://www.gnu.org/licenses/lgpl.txt</url>
     </license>
-    <change-notes>1.0.1:
+    <change-notes>1.0.2:
+- Update for beaTunes 6.
+
+1.0.1:
 - Fixed A/B confusion (swapped them)
 
 1.0.0:
 - Initial release
     </change-notes>
     <vendor>
-        <name>tagtraum industries incorporated</name>
-        <url>https://www.tagtraum.com/</url>
-        <email>support@tagtraum.com</email>
-        <logo>https://www.tagtraum.com/images/tagtraum-logo.png</logo>
+        <name>Jalulo UG (haftungsbeschränkt)</name>
+        <url>https://www.jalulo.eu/</url>
+        <email>support@jalulo.eu</email>
+        <logo>https://www.jalulo.eu/images/jalulo_icon_256.png</logo>
     </vendor>
     <beatunes-version>
-        <min>5.0.0</min>
-        <max>5.9.9</max>
+        <min>6.0.0</min>
+        <max>6.9.9</max>
     </beatunes-version>
 
     <!-- Analysis Tasks -->
